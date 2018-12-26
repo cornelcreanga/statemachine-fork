@@ -1,21 +1,17 @@
-package com.example.cornel.demo.statemachine;
+package com.example.cornel.demo.statemachinenew;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.statemachine.ExtendedState;
 import org.springframework.statemachine.StateMachine;
-import org.springframework.statemachine.annotation.OnTransitionEnd;
 import org.springframework.statemachine.annotation.WithStateMachine;
-import org.springframework.statemachine.persist.StateMachineRuntimePersister;
-import org.springframework.statemachine.service.StateMachineService;
 
 
 @WithStateMachine
-public class Workflow {
+public class Workflow2 {
 
 
 //    private StateMachine<States2, Events> stateMachine;
     @Autowired
-    private StateMachine<States, Events> stateMachine;
+    private StateMachine<States2, Events2> stateMachine;
 //    @Autowired
 //    StateMachineService<States2, Events> sms;
 
@@ -27,10 +23,10 @@ public class Workflow {
         stateMachine.start();
         Thread.sleep(1000);
         //stateMachine = sms.acquireStateMachine("test");
-        stateMachine.sendEvent(Events.RUN);
+        stateMachine.sendEvent(Events2.RUN);
         Thread.sleep(10*1000);
         System.out.println(stateMachine.getState());
-        stateMachine.sendEvent(Events.NEXT);
+//        stateMachine.sendEvent(Events2.RUN);
         Thread.sleep(2*1000);
         System.out.println(stateMachine.getState());
 //        stateMachine.sendEvent(Events.RUN);

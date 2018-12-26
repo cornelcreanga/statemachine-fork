@@ -1,17 +1,16 @@
-package com.example.cornel.demo.statemachine;
+package com.example.cornel.demo.statemachinenew;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
 
     @Autowired
-    Workflow workflow;
+    Workflow2 workflow;
 
     @Override
     public void run(String... args) throws Exception {

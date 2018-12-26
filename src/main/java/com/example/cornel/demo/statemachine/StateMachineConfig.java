@@ -169,9 +169,9 @@ public class StateMachineConfig
     }
 
 //    @Bean
-//    public StateMachineService<States, Events> stateMachineService(
-//            StateMachineFactory<States, Events> stateMachineFactory,
-//            StateMachineRuntimePersister<States, Events, String> stateMachineRuntimePersister) {
+//    public StateMachineService<States2, Events> stateMachineService(
+//            StateMachineFactory<States2, Events> stateMachineFactory,
+//            StateMachineRuntimePersister<States2, Events, String> stateMachineRuntimePersister) {
 //        return new DefaultStateMachineService<>(stateMachineFactory, stateMachineRuntimePersister);
 //    }
 
