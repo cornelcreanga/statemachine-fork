@@ -84,18 +84,18 @@ public class StateMachineConfig
             .withFork()
             .source(FORK).target(TASKS)
             .and().withExternal().source(CLONE1).target(CHOICE2).action(context -> {
-                work(CLONE1);
+                Util.work(CLONE1);
                  //context.getExtendedState().getVariables().put("ERROR",true);
              })
             .and().withChoice().source(CHOICE2)
             .first(PIPELINE1, context -> !context.getExtendedState().getVariables().containsKey("ERROR"))
             .last(TASKS1_DONE)
-            .and().withExternal().source(PIPELINE1).target(VALIDATION1).action(context -> work(PIPELINE1))
-            .and().withExternal().source(VALIDATION1).target(TASKS1_DONE).action(context -> work(VALIDATION1))
+            .and().withExternal().source(PIPELINE1).target(VALIDATION1).action(context -> Util.work(PIPELINE1))
+            .and().withExternal().source(VALIDATION1).target(TASKS1_DONE).action(context -> Util.work(VALIDATION1))
 
-            .and().withExternal().source(CLONE2).target(PIPELINE2).action(context -> work(CLONE2))
-            .and().withExternal().source(PIPELINE2).target(VALIDATION2).action(context -> work(PIPELINE2))
-            .and().withExternal().source(VALIDATION2).target(TASKS2_DONE).action(context -> work(VALIDATION2))
+            .and().withExternal().source(CLONE2).target(PIPELINE2).action(context -> Util.work(CLONE2))
+            .and().withExternal().source(PIPELINE2).target(VALIDATION2).action(context -> Util.work(PIPELINE2))
+            .and().withExternal().source(VALIDATION2).target(TASKS2_DONE).action(context -> Util.work(VALIDATION2))
             .and()
             .withJoin()
             .source(TASKS).target(JOIN)
@@ -109,10 +109,9 @@ public class StateMachineConfig
             .last(SCORE).
             and()
             .withExternal()
-            .source(SCORE).target(END).action(context -> work(SCORE));
+            .source(SCORE).target(END).action(context -> Util.work(SCORE));
 
     }
-
 
     @Bean(name = StateMachineSystemConstants.TASK_EXECUTOR_BEAN_NAME)
     public TaskExecutor taskExecutor() {
@@ -138,26 +137,6 @@ public class StateMachineConfig
             .runtimePersister(stateMachineRuntimePersister)
         ;
     }
-
-    private static void sleep(long millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) { }
-    }
-
-    private static void work(States s) {
-        System.err.println("working " + s + " on " + Thread.currentThread().getName());
-        sleep((long) (2500 + 1500 * Math.random()));
-    }
-
-//    @Bean
-//    public StateMachineService<States2, Events> stateMachineService(
-//            StateMachineFactory<States2, Events> stateMachineFactory,
-//            StateMachineRuntimePersister<States2, Events, String> stateMachineRuntimePersister) {
-//        return new DefaultStateMachineService<>(stateMachineFactory, stateMachineRuntimePersister);
-//    }
-
-//end::snippetAE[]
 
 }
 
