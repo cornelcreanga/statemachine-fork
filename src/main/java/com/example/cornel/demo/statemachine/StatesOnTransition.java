@@ -1,12 +1,11 @@
 package com.example.cornel.demo.statemachine;
 
 
-import org.springframework.statemachine.annotation.OnTransition;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import org.springframework.statemachine.annotation.OnTransition;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
