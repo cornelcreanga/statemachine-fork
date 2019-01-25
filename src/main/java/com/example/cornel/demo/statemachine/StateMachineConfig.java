@@ -132,9 +132,9 @@ public class StateMachineConfig
         throws Exception {
         config
             .withConfiguration()
-            .and()
-            .withPersistence()
-            .runtimePersister(stateMachineRuntimePersister)
+//            .and()
+//            .withPersistence()
+//            .runtimePersister(stateMachineRuntimePersister)
         ;
     }
 
